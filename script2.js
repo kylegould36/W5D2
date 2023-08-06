@@ -1,48 +1,61 @@
 // Menu data structure
 var menuLinks = [
-  {text: 'about', href: '/about'},
-  {text: 'catalog', href: '#', subLinks: [
-    {text: 'all', href: '/catalog/all'},
-    {text: 'top selling', href: '/catalog/top'},
-    {text: 'search', href: '/catalog/search'},
-  ]},
-  {text: 'orders', href: '#' , subLinks: [
-    {text: 'new', href: '/orders/new'},
-    {text: 'pending', href: '/orders/pending'},
-    {text: 'history', href: '/orders/history'},
-  ]},
-  {text: 'account', href: '#', subLinks: [
-    {text: 'profile', href: '/account/profile'},
-    {text: 'sign out', href: '/account/signout'},
-  ]},
+  { text: "about", href: "/about" },
+  {
+    text: "catalog",
+    href: "#",
+    subLinks: [
+      { text: "all", href: "/catalog/all" },
+      { text: "top selling", href: "/catalog/top" },
+      { text: "search", href: "/catalog/search" }
+    ]
+  },
+  {
+    text: "orders",
+    href: "#",
+    subLinks: [
+      { text: "new", href: "/orders/new" },
+      { text: "pending", href: "/orders/pending" },
+      { text: "history", href: "/orders/history" }
+    ]
+  },
+  {
+    text: "account",
+    href: "#",
+    subLinks: [
+      { text: "profile", href: "/account/profile" },
+      { text: "sign out", href: "/account/signout" }
+    ]
+  }
 ];
 
-let mainEl = document.querySelector("main");
-mainEl.style.backgroundColor = "#4a4e4d";
-mainEl.classList.add("flex-ctr");
+const mainEl = document.querySelector("main");
+console.log(mainEl);
 
-let topMenuEl = document.querySelector("#top-menu");
+mainEl.style.backgroundColor = "var(--main-bg)";
+
+mainEl.innerHTML = "<h1>SEI Rocks!</h1>";
+
+mainEl.setAttribute("class", "flex-ctr");
+
+
 topMenuEl.style.height = "100%";
-topMenuEl.style.backgroundColor = "#0e9aa7";
-topMenuEl.classList.add("flex-around");
+topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
+topMenuEl.setAttribute("class", "flex-around");
 
-for(let i = 0; i < menuLinks.length; i++) {
-  const menuLink = menuLinks[i];
 
-const aEl = document.createElement("a");
-aEl.textContent = menuLink.text;
-aEl.setAttribute("href", menuLink.href);
-topMenuEl.appendChild(aEl);
+for (let i = 0; i < menuLinks.length; i++) {
+  const newElem = document.createElement("a");
+  newElem.setAttribute("href", menuLinks[i].href);
+  newElem.textContent = menuLinks[i].text;
+  topMenuEl.append(newElem);
 }
 
-let subMenuEl = document.querySelector("#sub-menu");
 subMenuEl.style.height = "100%";
-subMenuEl.style.backgroundColor = "#3da4ab";
-subMenuEl.classList.add("flex-around");
+subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+subMenuEl.setAttribute("class", "flex-around");
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
-
-let topMenuLinks = document.querySelectorAll("topMenuEl");
 
 topMenuEl.addEventListener("click", (event) => {
   event.preventDefault();
